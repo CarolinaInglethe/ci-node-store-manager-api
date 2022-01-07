@@ -7,7 +7,7 @@ const create = async (name, quantity) => {
       return errorProducts.errorNameLength();
     }
 
-    const existProduct = await findByName(name);
+    const existProduct = await productModels.findByName(name);
     if (existProduct) {
         return errorProducts.errorNameExist();
     }
