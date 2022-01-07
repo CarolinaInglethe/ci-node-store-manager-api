@@ -12,6 +12,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+// Requesito 1:
 app.post('/products', productsControllers.create);
 
 app.listen(PORT, () => console.log(`Online , Porta: ${PORT}`));
