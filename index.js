@@ -1,9 +1,11 @@
 const express = require('express');
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 const productsControllers = require('./controllers/productControllers');
 
+const PORT = process.env.PORT || 3000;
 const app = express();
-const PORT = 3000;
 
 app.use(bodyParser.json());
 
@@ -15,4 +17,4 @@ app.get('/', (_request, response) => {
 // Requesito 1:
 app.post('/products', productsControllers.create);
 
-app.listen(PORT, () => console.log(`Online , Porta: ${PORT}`));
+app.listen(PORT, () => console.log(`Aplicação ouvindo na porta ${PORT}`));
