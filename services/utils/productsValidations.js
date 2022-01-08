@@ -5,13 +5,6 @@ const validateNameLength = () => ({
     },
 });
 
-const validateNameExists = () => ({
-    err: {
-        code: 'invalid_data',
-        message: 'Product already exists',
-      },
-});
-
 const validateQuantity = () => ({
     err: {
         code: 'invalid_data',
@@ -28,7 +21,6 @@ const validateQuantityTypeof = () => ({
 
 module.exports = {
     validateNameLength,
-    validateNameExists,
     validateQuantity,
     validateQuantityTypeof,
 };

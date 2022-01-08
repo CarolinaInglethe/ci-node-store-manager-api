@@ -18,20 +18,20 @@ const findByName = async (name) => {
 
 const create = async (name, quantity) => {
     if (name.length < 6) {
-      return productsValidations.errorNameLength();
+      return productsValidations.validateNameLength();
     }
 
-    const existProduct = await productModels.findByName(name);
-    if (existProduct) {
-        return productsValidations.errorNameExist();
+    const existProduct = await findByName(name);
+    if (existProduct.err) {
+        return existProduct;
     }
 
     if (quantity <= 0) {
-      return productsValidations.errorQuantityLength();
+      return productsValidations.validateQuantity();
     }
 
     if (typeof quantity === 'string') {
-      return productsValidations.errorQuantityTypeof();
+      return productsValidations.validateQuantityTypeof();
     }
 
     const productCreated = await productModels.create(name, quantity);
