@@ -1,13 +1,6 @@
 const mongoConnection = require('./connection');
 
 // Requesito 1 :
-const findByName = async (name) => {
-    const connection = await mongoConnection();
-    const product = await connection.collection('products').findOne({ name });
-    
-    return product !== null;
-  };
-
 const create = async (name, quantity) => {
     const connection = await mongoConnection();
     const { insertedId: _id } = await connection.collection('products')
@@ -15,6 +8,13 @@ const create = async (name, quantity) => {
 
     return { _id, name, quantity };
 };
+
+const findByName = async (name) => {
+    const connection = await mongoConnection();
+    const product = await connection.collection('products').findOne({ name });
+    
+    return product !== null;
+  };
 
 module.exports = {
     create,
