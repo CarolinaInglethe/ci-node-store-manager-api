@@ -2,11 +2,12 @@ const mongoConnection = require('./connection');
 
 // Requesito 1 :
 const create = async (name, quantity) => {
-    const connection = await mongoConnection();
-    const { insertedId: _id } = await connection.collection('products')
-      .insertOne({ name, quantity });
+  const productsCollection = await mongoConnection()
+    .then((db) => db.collection('products'));
 
-    return { _id, name, quantity };
+  const { insertedId: _id } = await productsCollection.insertOne({ name, quantity });
+
+  return { _id, name, quantity };
 };
 
 const findByName = async (name) => {
