@@ -1,26 +1,37 @@
-const validateNameLength = () => ({
-    err: {
-        code: 'invalid_data',
-        message: ' "name" length must be at least 5 characters long ',
-    },
-});
+const validateNameLength = (name) => {
+    if (!name || name.length < 6) {
+      return {
+        err: {
+          code: 'invalid_data',
+          message: '"name" length must be at least 5 characters long',
+        },
+      };
+    }
+    return true;
+  };
 
-const validateQuantity = () => ({
-    err: {
-        code: 'invalid_data',
-        message: '"quantity" must be larger than or equal to 1',
-    },
-});
-
-const validateQuantityTypeof = () => ({
-    err: {
-        code: 'invalid_data',
-        message: '"quantity" must be a number',
-    },
-});
+  const validateQuantity = (quantity) => {
+    if (typeof quantity !== 'number') {
+      return {
+        err: {
+          code: 'invalid_data',
+          message: '"quantity" must be a number',
+        },
+      };
+    }
+  
+    if (!quantity || quantity < 0) {
+      return {
+        err: {
+          code: 'invalid_data',
+          message: '"quantity" must be larger than or equal to 1',
+        },
+      };
+    }
+    return true;
+  };
 
 module.exports = {
     validateNameLength,
     validateQuantity,
-    validateQuantityTypeof,
 };

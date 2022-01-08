@@ -17,22 +17,14 @@ const findByName = async (name) => {
 };
 
 const create = async (name, quantity) => {
-    if (name.length < 6) {
-      return productsValidations.validateNameLength();
-    }
+    const validateName = productsValidations.validateNameLength(name);
+    if (validateName.err) return validateName;
 
     const existProduct = await findByName(name);
-    if (existProduct.err) {
-        return existProduct;
-    }
+    if (existProduct.err) return existProduct;
 
-    if (quantity <= 0) {
-      return productsValidations.validateQuantity();
-    }
-
-    if (typeof quantity === 'string') {
-      return productsValidations.validateQuantityTypeof();
-    }
+    const validateQuantity = productsValidations.validateQuantity(quantity);
+    if (validateQuantity.err) return validateQuantity;
 
     const productCreated = await productModels.create(name, quantity);
 
