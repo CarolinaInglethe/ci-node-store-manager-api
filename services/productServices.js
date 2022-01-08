@@ -1,5 +1,5 @@
 const productModels = require('../models/productModels');
-const errorProducts = require('./utils/productsErrors');
+const productsValidations = require('./utils/productsValidations');
 
 // Requesito 1 (validacao para o Create):
 const findByName = async (name) => {
@@ -18,20 +18,20 @@ const findByName = async (name) => {
 
 const create = async (name, quantity) => {
     if (name.length < 6) {
-      return errorProducts.errorNameLength();
+      return productsValidations.errorNameLength();
     }
 
     const existProduct = await productModels.findByName(name);
     if (existProduct) {
-        return errorProducts.errorNameExist();
+        return productsValidations.errorNameExist();
     }
 
     if (quantity <= 0) {
-      return errorProducts.errorQuantityLength();
+      return productsValidations.errorQuantityLength();
     }
 
     if (typeof quantity === 'string') {
-      return errorProducts.errorQuantityTypeof();
+      return productsValidations.errorQuantityTypeof();
     }
 
     const productCreated = await productModels.create(name, quantity);
