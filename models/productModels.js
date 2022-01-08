@@ -9,14 +9,11 @@ const findByName = async (name) => {
   };
 
 const create = async (name, quantity) => {
-    const productCreated = await mongoConnection.connection()
-    .then((db) => db.collection('products').insertOne({ name, quantity }))
-    .then((result) => ({
-        _id: result.insertedId,
-        name,
-        quantity,
-        }));
-    return productCreated;
+    const connection = await mongoConnection.connection();
+    const { insertedId: _id } = await connection.collection('products')
+      .insertOne({ name, quantity });
+
+    return { _id, name, quantity };
 };
 
 module.exports = {
