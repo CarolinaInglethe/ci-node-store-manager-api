@@ -20,11 +20,11 @@ const create = async (name, quantity) => {
     const validateName = productsValidations.validateNameLength(name);
     if (validateName.err) return validateName;
 
-    const existProduct = await findByName(name);
-    if (existProduct.err) return existProduct;
-
     const validateQuantity = productsValidations.validateQuantity(quantity);
     if (validateQuantity.err) return validateQuantity;
+
+    const existProduct = await findByName(name);
+    if (existProduct.err) return existProduct;
 
     const productCreated = await productModels.create(name, quantity);
 

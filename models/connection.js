@@ -10,7 +10,7 @@ const OPTIONS = {
 };
 
 const connection = () => (
-   MongoClient.connect(MONGO_DB_URL, OPTIONS)
+     MongoClient.connect(MONGO_DB_URL, OPTIONS)
     .then((conn) => conn.db(DB_NAME))
     .catch((err) => {
       console.log(err);
