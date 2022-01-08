@@ -10,7 +10,7 @@ const create = async (req, res, _next) => {
         return res.status(422).json(createProduct);
     }
 
-    return res.status(201).json(createProduct);
+    res.status(201).json(createProduct);
 };
 
 module.exports = {
