@@ -31,7 +31,31 @@ const create = async (name, quantity) => {
     return productCreated;
 };
 
+// Requesito 2 (validacao dos retornos get) :
+const getAll = async () => {
+  const allProducts = await productModels.getAll();
+
+  return allProducts;
+};
+
+const getById = async (id) => {
+  const productById = await productModels.getById(id);
+
+  if (!productById) {
+    return {
+      err: {
+        code: 'invalid_data',
+        message: 'Wrong id format',
+      },
+    };
+  }
+
+  return productById;
+};
+
 module.exports = {
     create,
     findByName,
+    getAll,
+    getById,
 };
