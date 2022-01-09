@@ -28,7 +28,7 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const connection = await mongoConnection();
-  const productById = await connection('products')
+  const productById = await connection.collection('products')
     .findOne({ _id: ObjectId(id) });
 
   return productById;
