@@ -17,7 +17,16 @@ const findByName = async (name) => {
     return product !== null;
   };
 
+// Requesito 2 :
+const getAll = async () => {
+  const connection = await mongoConnection();
+  const allProducts = await connection.collection('products').find();
+
+  return allProducts;
+};
+
 module.exports = {
     create,
     findByName,
+    getAll,
 };
