@@ -21,7 +21,7 @@ const findByName = async (name) => {
 // Requesito 2 :
 const getAll = async () => {
   const connection = await mongoConnection();
-  const allProducts = await connection.collection('products').find();
+  const allProducts = await connection.collection('products').find().toArray();
 
   return allProducts;
 };
