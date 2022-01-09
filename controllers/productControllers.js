@@ -17,7 +17,7 @@ const create = async (req, res, _next) => {
 const getAll = async (_req, res, _next) => {
     const AllProducts = await productServices.getAll();
 
-    return res.status(200).json(AllProducts);
+    return res.status(200).json({ AllProducts });
 };
 
 const getById = async (req, res, _next) => {
