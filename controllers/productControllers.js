@@ -17,10 +17,6 @@ const create = async (req, res, _next) => {
 const getAll = async (_req, res, _next) => {
     const AllProducts = await productServices.getAll();
 
-    if (AllProducts.err) {
-        return res.status(422).json(AllProducts);
-    }
-
     return res.status(200).json(AllProducts);
 };
 
