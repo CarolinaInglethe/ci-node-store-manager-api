@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const mongoConnection = require('./connection');
 
 // Requesito 1 :
@@ -25,8 +26,17 @@ const getAll = async () => {
   return allProducts;
 };
 
+const getById = async (id) => {
+  const connection = await mongoConnection();
+  const productById = await connection('products')
+    .findOne({ _id: ObjectId(id) });
+
+  return productById;
+};
+
 module.exports = {
     create,
     findByName,
     getAll,
+    getById,
 };
