@@ -14,7 +14,7 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-// Requesito 1:
+// Requesito 1: 
 app.post('/products', productsControllers.create);
 
 // Requesito 2 :
