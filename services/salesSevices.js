@@ -1,6 +1,6 @@
 const salesValidations = require('./utils/validations');
 
-// Requesito 1 (validacao para o Create):
+// Requesito 5 (validacao para o Create):
 const create = async (productId, quantity) => {
   const validateQuantity = salesValidations.validateQuantity(quantity);
   if (validateQuantity.err) return validateQuantity;
