@@ -1,5 +1,5 @@
 const validateQuantity = (quantity) => {
-  if (quantity >= 0 || typeof quantity === 'string') {
+  if (quantity <= 0 || typeof quantity === 'string') {
     return {
       err: {
         code: 'invalid_data',
