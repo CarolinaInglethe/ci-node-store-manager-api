@@ -4,10 +4,10 @@ const mongoConnection = require('./connection');
 const create = async (productId, quantity) => {
     const connection = await mongoConnection();
 
-    const salesCreated = await connection.collection('sales')
-    .insertMany({ productId, quantity });
+    const createdSales = await connection.collection('sales')
+    .insertOne({ productId, quantity });
   
-    return salesCreated;
+    return createdSales;
   };
 
 module.exports = {
