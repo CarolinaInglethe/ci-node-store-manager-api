@@ -16,14 +16,11 @@ app.get('/', (_request, response) => {
 
 // Requesito 1: 
 app.post('/products', productsControllers.create);
-
 // Requesito 2 :
 app.get('/products', productsControllers.getAll);
 app.get('/products/:id', productsControllers.getById);
-
 // Requesito 3 :
 app.put('/products/:id', productsControllers.update);
-
 // Requesito 4 :
 app.delete('/products/:id', productsControllers.deleteProduct);
 
