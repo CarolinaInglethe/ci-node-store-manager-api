@@ -27,6 +27,7 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
+  if (!ObjectId.isValid(id)) return false;
   const connection = await mongoConnection();
   const productById = await connection.collection('products')
     .findOne({ _id: ObjectId(id) });
