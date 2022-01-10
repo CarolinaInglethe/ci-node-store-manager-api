@@ -20,7 +20,7 @@ const validateNameLength = (name) => {
       };
     }
   
-    if (!quantity || quantity < 0) {
+    if (!quantity || quantity <= 0) {
       return {
         err: {
           code: 'invalid_data',

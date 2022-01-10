@@ -53,9 +53,23 @@ const getById = async (id) => {
   return productById;
 };
 
+// Requesito 3:
+const update = async (id, name, quantity) => {
+  const validateName = productsValidations.validateNameLength(name);
+  if (validateName.err) return validateName;
+
+  const validateQuantity = productsValidations.validateQuantity(quantity);
+  if (validateQuantity.err) return validateQuantity;
+
+  const updateProduct = productModels.updateProduct(id, name, quantity);
+
+  return updateProduct;
+}; 
+
 module.exports = {
     create,
     findByName,
     getAll,
     getById,
+    update,
 };
