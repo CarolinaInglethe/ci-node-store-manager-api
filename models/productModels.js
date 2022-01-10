@@ -47,10 +47,23 @@ const update = async (id, name, quantity) => {
   return { id, name, quantity };
 };
 
+// Requesito 4 :
+const deleteProduct = async (id) => {
+  if (!ObjectId.isValid(id)) return false;
+  const connection = mongoConnection();
+
+  // https://pt.stackoverflow.com/questions/157669/como-deletar-um-documento-espec%C3%ADfico-de-uma-collection-no-mongodb
+  const productDeleted = await connection.collection('products')
+  .remove({ _id: ObjectId(id) });
+
+  return productDeleted;
+};
+
 module.exports = {
     create,
     findByName,
     getAll,
     getById,
     update,
+    deleteProduct,
 };
