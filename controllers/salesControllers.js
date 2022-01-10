@@ -9,7 +9,7 @@ const create = async (req, res) => {
         return res.status(422).json(createdSales);
     }
 
-    res.status(201).json(createdSales);
+    res.status(200).json(createdSales);
 };
 
 module.exports = {
