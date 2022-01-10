@@ -61,7 +61,7 @@ const update = async (id, name, quantity) => {
   const validateQuantity = productsValidations.validateQuantity(quantity);
   if (validateQuantity.err) return validateQuantity;
 
-  const updateProduct = await productModels.updateProduct(id, name, quantity);
+  const updateProduct = await productModels.update(id, name, quantity);
   
   return updateProduct;
 }; 
