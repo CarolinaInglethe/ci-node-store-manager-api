@@ -27,5 +27,8 @@ app.delete('/products/:id', productsControllers.deleteProduct);
 
 // Requesito 5:
 app.post('/sales', salesControllers.create);
+// Requesito 6 :
+app.get('/sales', salesControllers.getAll);
+app.get('/sales/:id', salesControllers.getById);
 
 app.listen(PORT, () => console.log(`Aplicação ouvindo na porta ${PORT}`));
