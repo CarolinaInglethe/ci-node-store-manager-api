@@ -1,4 +1,4 @@
-const salesValidations = require('./utils/validations');
+const salesValidations = require('./utils/salesValidation');
 const salesModels = require('../models/salesModels');
 
 // Requesito 5 (validacao para o Create):
