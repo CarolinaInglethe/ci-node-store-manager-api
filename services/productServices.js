@@ -1,5 +1,5 @@
 const productModels = require('../models/productModels');
-const productsValidations = require('./utils/validations');
+const productsValidations = require('./utils/productsValidations');
 
 // Requesito 1 (validacao para o Create):
 const findByName = async (name) => {
