@@ -24,4 +24,7 @@ app.put('/products/:id', productsControllers.update);
 // Requesito 4 :
 app.delete('/products/:id', productsControllers.deleteProduct);
 
+// Requesito 5:
+app.post('/products', salesControllers.create);
+
 app.listen(PORT, () => console.log(`Aplicação ouvindo na porta ${PORT}`));
