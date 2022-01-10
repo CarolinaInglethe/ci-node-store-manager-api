@@ -11,6 +11,30 @@ const create = async (productId, quantity) => {
   return productCreated;
 };
 
+// Requesito 6 :
+const getAll = async () => {
+  const allProducts = await salesModels.getAll();
+
+  return allProducts;
+};
+
+const getById = async (id) => {
+  const salesById = await salesModels.getById(id);
+
+  if (!salesById) {
+    return {
+      err: {
+        code: 'not_found',
+        message: 'Sale not found',
+      },
+    };
+  }
+
+  return salesById;
+};
+
 module.exports = {
-    create,
+  create,
+  getAll,
+  getById,
 };
