@@ -1,4 +1,4 @@
-const productsServices = require('../productServices');
+const productModels = require('../../models/productModels');
 
 const validateQuantity = (arraySales) => {
   // passa por cada sale e valida seu quantity
@@ -15,11 +15,9 @@ const validateQuantity = (arraySales) => {
 };
 
 const validateProductId = async (arraySales) => {
-  for (let i = 0; i < arraySales.length; i + 1) {
-    const validateProduct = productsServices
-      .getById(arraySales[i].productId);
+  const productId = await productModels.getById(arraySales[0].productId);
     
-    if (validateProduct.err) {
+  if (!productId) {
       return {
         err: {
           code: 'invalid_data',
@@ -27,7 +25,6 @@ const validateProductId = async (arraySales) => {
         },
       };
     }
-  }
 };
 
 module.exports = {

@@ -3,9 +3,9 @@ const salesModels = require('../models/salesModels');
 
 // Requesito 5 (validacao para o Create):
 const create = async (arraySales) => {
-  const validateProductId = salesValidations.validateProductId(arraySales);
+  const validateProductId = await salesValidations.validationProductId(arraySales);
   if (validateProductId.err) return validateProductId;
-  
+
   const validateQuantity = salesValidations.validateQuantity(arraySales);
   if (validateQuantity.err) return validateQuantity;
      
