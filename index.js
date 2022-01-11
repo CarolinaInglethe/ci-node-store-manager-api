@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const bodyParser = require('body-parser');
 const productsControllers = require('./controllers/productControllers');
-const salesControllers = require('./controllers/salesControllers');
+// const salesControllers = require('./controllers/salesControllers');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
