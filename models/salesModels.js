@@ -5,10 +5,10 @@ const mongoConnection = require('./connection');
 const create = async (arraySales) => {
     const connection = await mongoConnection();
 
-    const { insertedId: id } = await connection.collection('sales')
+    const { insertedId } = await connection.collection('sales')
     .insertOne({ itensSold: arraySales });
   
-    return { _id: id, itensSold: arraySales };
+    return { _id: insertedId, itensSold: arraySales };
   };
 
 // Requesito 6:
