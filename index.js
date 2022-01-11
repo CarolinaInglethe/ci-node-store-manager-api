@@ -31,6 +31,6 @@ app.post('/sales', salesControllers.create);
 app.get('/sales', salesControllers.getAll);
 app.get('/sales/:id', salesControllers.getById);
 // Requesito 7 :
-app.put('/sales/:id', salesControllers.update);
+// app.put('/sales/:id', salesControllers.update);
 
 app.listen(PORT, () => console.log(`Aplicação ouvindo na porta ${PORT}`));
