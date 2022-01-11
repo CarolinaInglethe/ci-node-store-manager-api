@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const bodyParser = require('body-parser');
 const productsControllers = require('./controllers/productControllers');
-// const salesControllers = require('./controllers/salesControllers');
+const salesControllers = require('./controllers/salesControllers');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -26,7 +26,7 @@ app.put('/products/:id', productsControllers.update);
 app.delete('/products/:id', productsControllers.deleteProduct);
 
 // // Requesito 5:
-// app.post('/sales', salesControllers.create);
+app.post('/sales', salesControllers.create);
 // // Requesito 6 :
 // app.get('/sales', salesControllers.getAll);
 // app.get('/sales/:id', salesControllers.getById);
