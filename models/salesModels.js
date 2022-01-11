@@ -47,7 +47,7 @@ const deleteSale = async (id) => {
   const connection = await mongoConnection();
 
   // https://pt.stackoverflow.com/questions/157669/como-deletar-um-documento-espec%C3%ADfico-de-uma-collection-no-mongodb
-  const saleDeleted = await connection.collection('products')
+  const saleDeleted = await connection.collection('sales')
   .remove({ _id: ObjectId(id) });
 
   return saleDeleted;
