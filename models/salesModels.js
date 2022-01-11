@@ -3,12 +3,14 @@ const mongoConnection = require('./connection');
 
 // Requesito 5 :
 const create = async (arraySales) => {
-    const connection = await mongoConnection();
-    const { insertedId } = await connection.collection('sales')
+  const salesCollection = await mongoConnection()
+    .then((db) => db.collection('sales'));
+
+  const { insertedId: _id } = await salesCollection
     .insertOne({ itensSold: arraySales });
-  
-    return { _id: insertedId, itensSold: arraySales };
-  };
+
+    return { _id, itensSold: arraySales };
+};
 
 // Requesito 6:
 const getAll = async () => {
