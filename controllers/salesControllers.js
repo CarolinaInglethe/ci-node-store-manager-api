@@ -1,13 +1,16 @@
 const salesServices = require('../services/salesSevices');
 
 // Requesito 5:
-const create = async (req, res) => res.status(200).json({ message: 'test' });
-    // const arraySales = req.body;
-    // const createdSales = await salesServices.create(arraySales);
+const create = async (req, res) => {
+    const arraySales = req.body;
+    const createdSales = await salesServices.create(arraySales);
     
-    // if (createdSales.err) {
-    //     return res.status(422).json(createdSales);
-    // }
+    if (createdSales.err) {
+        return res.status(422).json(createdSales);
+    }
+
+    return res.status(200).json(createdSales);
+};
 
 // Requesito 6:
 const getAll = async (_req, res, _next) => {
