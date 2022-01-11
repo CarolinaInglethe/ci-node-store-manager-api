@@ -32,5 +32,7 @@ app.get('/sales', salesControllers.getAll);
 app.get('/sales/:id', salesControllers.getById);
 // Requesito 7 :
 app.put('/sales/:id', salesControllers.update);
+// Requesito 8 :
+app.delete('/sales/:id', salesControllers.deleteSale);
 
 app.listen(PORT, () => console.log(`Aplicação ouvindo na porta ${PORT}`));
