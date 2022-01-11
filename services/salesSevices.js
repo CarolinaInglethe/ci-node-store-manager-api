@@ -6,9 +6,9 @@ const create = async (arraySales) => {
   const validateQuantity = salesValidations.validateQuantity(arraySales);
   if (validateQuantity.err) return validateQuantity;
 
-  const validateProductId = await salesValidations.validationProductId(arraySales);
+  const validateProductId = salesValidations.validationProductId(arraySales);
   if (validateProductId.err) return validateProductId;
-     
+
   const productCreated = await salesModels.create(arraySales);
   
   return productCreated;

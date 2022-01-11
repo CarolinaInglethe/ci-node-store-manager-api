@@ -1,33 +1,32 @@
-const productModels = require('../../models/productModels');
+const productsModels = require('../../models/productModels');
 
 const validateQuantity = (arraySales) => {
-  // passa por cada sale e valida seu quantity
-  for (let i = 0; i < arraySales.length; i + 1) {
-    if (arraySales[i].quantity <= 0 || typeof arraySales[i].quantity === 'string') {
-      return {
-        err: {
-          code: 'invalid_data',
-          message: 'Wrong product ID or invalid quantity',
-        },
-      };
-    } 
+  if (typeof arraySales[0].quantity !== 'number' || arraySales[0].quantity <= 0) {
+    return {
+      err: {
+        code: 'invalid_data',
+         message: 'Wrong product ID or invalid quantity',
+      },
+    };
   }
+  return true;
 };
 
-const validateProductId = async (arraySales) => {
-  const productId = await productModels.getById(arraySales[0].productId);
-    
-  if (!productId) {
-      return {
-        err: {
-          code: 'invalid_data',
-          message: 'Wrong product ID or invalid quantity',
-        },
-      };
-    }
+const validationProductId = async (arraySales) => {
+  const productIdExists = await productsModels.getById(arraySales[0].productId);
+  const validateHex = /[0-9A-Fa-f]{6}/g;
+  if (!validateHex.test(arraySales[0].productId) || !productIdExists) {
+    return {
+      err: {
+        code: 'invalid_data',
+        message: 'Wrong product ID or invalid quantity',
+      },
+    };
+  }
+  return true;
 };
 
 module.exports = {
     validateQuantity,
-    validateProductId,
+    validationProductId,
 };

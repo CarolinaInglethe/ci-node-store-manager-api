@@ -1,7 +1,7 @@
 const salesServices = require('../services/salesSevices');
 
 // Requesito 5:
-const create = async (req, res) => {
+const create = async (req, res, _next) => {
     const createdSales = await salesServices.create(req.body);
     
     if (createdSales.err) {

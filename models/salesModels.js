@@ -6,10 +6,10 @@ const create = async (arraySales) => {
   const salesCollection = await mongoConnection()
     .then((db) => db.collection('sales'));
 
-  const { insertedId: _id } = await salesCollection
+  const { insertedId } = await salesCollection
     .insertOne({ itensSold: arraySales });
 
-    return { _id, itensSold: [...arraySales] };
+    return { _id: insertedId, itensSold: [...arraySales] };
 };
 
 // Requesito 6:
