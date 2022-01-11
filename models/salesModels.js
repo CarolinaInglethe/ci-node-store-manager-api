@@ -29,8 +29,21 @@ const getById = async (id) => {
   return productById;
 };
 
+// Requesito 7 :
+const update = async (id, arraySales) => {
+  if (!ObjectId.isValid(id)) return false;
+  const connection = await mongoConnection();
+
+  await connection.collection('sales').updateOne(
+    { _id: ObjectId(id) }, { $set: { itensSold: [...arraySales] } },
+  );
+
+  return { _id: id, itensSold: [...arraySales] };
+};
+
 module.exports = {
     create,
     getAll,
     getById,
+    update,
 };
