@@ -2,8 +2,8 @@ const salesServices = require('../services/salesSevices');
 
 // Requesito 5:
 const create = async (req, res) => {
-    const { productId, quantity } = req.body;
-    const createdSales = await salesServices.create(productId, quantity);
+    const arraySales = req.body;
+    const createdSales = await salesServices.create(arraySales);
     
     if (createdSales.err) {
         return res.status(422).json(createdSales);
