@@ -9,7 +9,7 @@ const create = async (arraySales) => {
   const { insertedId: _id } = await salesCollection
     .insertOne({ itensSold: arraySales });
 
-    return { _id, itensSold: arraySales };
+    return { _id, itensSold: [...arraySales] };
 };
 
 // Requesito 6:
